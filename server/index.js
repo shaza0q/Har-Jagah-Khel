@@ -22,7 +22,7 @@ app.use('/ground', GroundRouter)
 app.use('/time', TimeSlotRouter)
 app.use('/book', BookingRouter)
 
-mongoose.connect('mongodb://127.0.0.1:27017/authentication')
+mongoose.connect('mongodb+srv://mohdarslaan1207:Shazam12%40@cluster0.5n0un.mongodb.net/authentication')
 const db = mongoose.connection;
 
 db.on('error', (err) => {
