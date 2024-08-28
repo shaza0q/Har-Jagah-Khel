@@ -1,0 +1,10 @@
+.addGroundMain{
+    width: 55%;
+    padding: 55px 20px
+}
+
+.form-addGround{
+    display: flex;
+    flex-direction: column;
+    
+}

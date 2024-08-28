@@ -1,0 +1,21 @@
+.bookings{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black */
+    flex-wrap: wrap;
+}
+
+.booking-card{
+    display: flex;
+    margin: 10px;
+    border: 1.5px solid rgb(247, 84, 30);
+    padding: 15px 25px;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#confirm-bt-booking{
+    margin-top: 8px;
+    padding: 10px;
+}

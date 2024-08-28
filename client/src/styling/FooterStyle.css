@@ -1,0 +1,13 @@
+footer{
+    height: 20vh;
+    margin-top: 2.9rem;
+    border-top: 1px solid black;
+    border-top-left-radius: 75px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content{
+    width: 80%;
+    display: flex;
+}

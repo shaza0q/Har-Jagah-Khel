@@ -1,0 +1,173 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+}
+  
+  @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #f6f5f7;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  #for-sign{
+    margin-bottom: 20px;
+  }
+
+  #for-sign-up{
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-weight: bold;
+    font-size: 3em;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 2em;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+  }
+  
+  span {
+    font-size: 12px;
+  }
+  
+  a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+  }
+  
+  button {
+    border-radius: 20px;
+    border: 1px solid #ff4b2b;
+    background-color: #ff4b2b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    cursor: pointer;
+  }
+  
+  .signIn-bt{
+    padding: 15px 35px
+
+  }
+
+  .signUp{
+    margin-top: 15px;
+  }
+
+  button:hover{
+    background-color: #da1c1c;
+  }
+
+  .login-form {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+  }
+  
+  input {
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+  }
+
+
+  input[type='radio']{
+    cursor: pointer;
+    margin-left: 10px
+  }
+  
+  
+  .form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+  }
+    
+  .sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+  }
+
+ 
+  .social-container a {
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+  }
+
+  
+  .radio-bt{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  #radio-sub-bt{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  .Link{
+    text-decoration: none;
+    text-transform: capitalize;
+    /* padding: 0 5px; */
+    margin-top: 0 5px;
+    position: relative;
+  }
+
+  .Link::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ff416c;
+    transition: all .5s;
+  }
+
+  .Link:hover::before{
+    width: 100%;
+  }

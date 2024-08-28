@@ -1,0 +1,35 @@
+.gCard{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    justify-content: center;
+    /* align-items: center; */
+    padding: 15px;
+}
+
+.groundCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 575px;
+    max-height: 650px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 25px 15px;
+    padding: 10px;
+    box-shadow: 0px 10px 30px;
+    border-radius: 10px;
+    
+
+}
+
+.ground-bt{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 15px 30px;
+}

@@ -1,0 +1,47 @@
+
+.addingTime{
+    display: flex;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    margin: 0;
+    padding: 15px;
+}
+
+.addingTime li{
+    display: flex;
+    width: 100%;
+    /* border: 1px dotted red; */
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.close{
+    background-color: rgb(251, 19, 100);
+}
+
+.close:hover{
+    background-color: rgb(255, 4, 4);
+}
+
+.timeSlot-bts{
+    display: flex;
+    justify-content: space-between;
+}
+
+li input{
+    /* background-color: bisque; */
+    width: 20px;
+}
+
+li label{
+    width: 75%
+}
+
+.addingTime ul{
+    list-style: none;
+    padding: 15px 25px;
+    border: 1px solid violet;
+    display: flex;
+    flex-direction: column;
+}

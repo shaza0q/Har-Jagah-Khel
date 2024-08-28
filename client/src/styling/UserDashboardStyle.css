@@ -1,0 +1,125 @@
+header{
+    height: 12vh;
+    padding: 20px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+h3{
+    font-size: 2rem;
+}
+
+h4{
+    font-size: 1.75rem;
+    font-variant: small-caps;
+}
+
+
+#logout-bt{
+    padding: 15px 35px;
+    margin-top: 5px;
+}
+
+
+#desc{
+    padding-top: 0.5rem;
+    line-height: 5px;
+}
+
+
+.cards{
+    width: 85%;
+    margin: 0 auto;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 575px;
+    height: 500px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 15px;
+}
+
+.gImage{
+    width:500px;
+    height: 375px;
+    border-radius: 5px;
+}
+
+.blur{
+    filter: blur(5px);
+    pointer-events: none
+}
+
+
+.modal{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    bottom: 0;
+    right: 0; 
+    background-color: white;
+    z-index: 50;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px;
+    padding: 20px;
+    width: 100%;
+    max-width: 850px; 
+    height: 100%;
+    max-height: 600px; 
+    object-fit: cover;
+    overflow: auto;
+}
+
+
+.headTab{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 49;
+}
+
+
+.slots{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 35px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+
+.slot-button{
+    width: 85px;
+    height: 45px;
+    margin: 5px;
+}
