@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const getGroundNear = (zipcode, minDist, maxDist, setGroundData) => {
-    axios.get(`http://localhost:3100/ground/list/ground?zipcode=${zipcode}&minDist=${minDist}&maxDist=${maxDist}`)
+    axios.get(`https://har-jagah-khel.onrender.com/ground/list/ground?zipcode=${zipcode}&minDist=${minDist}&maxDist=${maxDist}`)
     .then(response=>{
         if(!response?.data){
             console.log("No enteries present")
