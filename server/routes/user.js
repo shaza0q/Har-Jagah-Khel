@@ -2,6 +2,8 @@ import express from 'express'
 import bcrypt, { hash } from 'bcrypt'
 import { User } from '../models/User.js'
 import {Company} from '../models/Company.js'
+import { TimeSlot } from '../models/TimeSlot.js'
+import { Ground } from '../models/Ground.js'
 import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
 
@@ -30,32 +32,45 @@ router.post('/signup', async(req, res) => {
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user) {
+    const comp = await Company.findOne({email});
+    if (!user && !comp) {
       return res.json({ message: "user is not registered" });
     }
   
-    const validPassword = await bcrypt.compare(password, user.password);
+    var type;
+    if(!user)type = comp;
+    else type=user;
+
+    const validPassword = await bcrypt.compare(password, type.password);
     if (!validPassword) {
       return res.json({ message: "password is incorrect" });
     }
   
-    const token = jwt.sign({ username: user.username, email }, process.env.KEY, {
-      expiresIn: "1h",
+    const token = jwt.sign({ username: type.username, email }, process.env.KEY, {
+      expiresIn: "6h",
     });
     console.log("token generated....",)
-    res.cookie("token", token, { httpOnly: true, maxAge: 360000 });
-    return res.json({ status: true, message: "login successfully" });
+    res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
+    
+    return res.json({ status: true, type});
   });
 
 router.post('/forgot-password', async(req, res) => {
   const {email} = req.body;
   try{
     const user = await User.findOne({email})
-    if(!user){
+    const comp = await Company.findOne({email})
+
+    if(!comp && !user){
       return res.json({message: "User not registered"})
     }
+    
+    var validOne
 
-    const token = jwt.sign({id: user._id}, process.env.KEY, {expiresIn: "1h",});
+    if(comp)validOne = comp;
+    else validOne = user;
+
+    const token = jwt.sign({id: validOne._id}, process.env.KEY, {expiresIn: "1h",});
 
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -92,11 +107,22 @@ router.post('/reset-password/:token', async(req, res) => {
   try{
     const decoded = jwt.verify(token, process.env.KEY);
     const idn = decoded.id;
-    console.log('decoded object: ', decoded)
-    console.log('user id: ', decoded.id)
+    // console.log('decoded object: ', decoded)
+    // console.log('user id: ', decoded.id)
+    let user = await User.findById(idn)
+
+    if(!user){
+      user = await Company.findById(idn)
+      if(!user){
+        return res.status(404).json({status: false, message: 'User not found'})
+      }
+    }
+
 
     const hashPasword = await bcrypt.hash(password, 10)
-    await User.findByIdAndUpdate({_id: idn}, {password: hashPasword})
+
+    user.password = hashPasword
+    await user.save()
     return res.json({status: true, message: "updated Password"})
 
   }catch(err){
@@ -129,20 +155,59 @@ router.get('/logout', (req, res) => {
   return res.json({status: true})
 })
 
+router.get('/dashboard', (req,res) => {
+  // console.log('in dashboard api 138')
+  const token = req.cookies.token
+  try{
+    const decoded = jwt.verify(token, process.env.KEY)
+    const {type} = decoded
+    // console.log(type)
+    if(type == 'Company') return res.json({status: true})
+  }
+catch(error){console.log("Error in going to dashboard", error)}
+})
+
 router.get('/loginData', async(req, res) => {
   const token = req.cookies.token
-  console.log("token-------146",token)
+  // console.log("token-------146",token)
+
   try{
     const decoded = jwt.verify(token, process.env.KEY)
     const {username, email} = decoded;
-    const user = await User.findOne({ email });
-    console.log(user)
+    var user
+    if(!await User.findOne({email})) user = await Company.findOne({ email })
+    else user = await User.findOne({ email })
+
+    // console.log(user)
     res.json({status: true, user})
   }
   catch(error){
     console.log("Eror fetching user data: ", error)
   }
 })
+
+router.post('/addGround', async (req, res) => {
+  const { gname, gtype, gdisc, address, pincode, city, state, photo, userEmail } = req.body;
+
+  // console.log(gname, gtype, gdisc, address, pincode, city, state, photo, userEmail);
+
+  try {
+      const comp = await Company.findOne({ userEmail });
+      if (!comp) {
+          console.log('Company not registered');
+      }
+
+      const newGround = new Ground({
+          gname, gtype, gdisc, address, pincode, city, state, photo, userEmail
+      });
+      await newGround.save();
+
+      return res.json({ status: true, message: 'Ground Added' });
+  } catch (e) {
+      console.log(e);
+      return res.status(500).json({ status: false, message: 'Error adding ground' });
+  }
+});
 
 
 export {router as UserRouter}
