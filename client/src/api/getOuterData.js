@@ -1,4 +1,6 @@
 import axios from "axios"
+import {BASEURL} from '../constant.js'
+
 
 export const getOuterData = (slot_id) => {
   

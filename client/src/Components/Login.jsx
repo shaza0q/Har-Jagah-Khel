@@ -4,7 +4,7 @@ import Axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 import {motion} from 'framer-motion'
 import SocialMedia from "./SocialMedia";
-
+import {BASEURL} from '../constant.js'
 
 const Login = () => {
     const [email, setEmail] = useState('')

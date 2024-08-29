@@ -1,4 +1,6 @@
 import axios from 'axios'
+import {BASEURL} from '../constant.js'
+
 
 export const completeBooking = (id) => {
   return axios.post(`http://localhost:3100/book/confirmBooking?id=${id}`)
