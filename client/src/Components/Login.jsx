@@ -17,7 +17,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // alert(`You are login with email: ${email} and password: ${password}`);
-        Axios.post("http://localhost:3100/auth/login", {
+        Axios.post(`http://localhost:3100/auth/login`, {
             email, password}
             ).then(response => {
                 console.log(response.data)

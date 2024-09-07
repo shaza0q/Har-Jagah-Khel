@@ -3,7 +3,7 @@ import {BASEURL} from '../constant.js'
 
 export const bookingSlot = (slotId, groundId, userId) => {
     try{
-        axios.post(`http://localhost:3100/book/addBooking?slotId=${slotId}&groundId=${groundId}&userId=${userId}`)
+        axios.post(`${BASEURL}/book/addBooking?slotId=${slotId}&groundId=${groundId}&userId=${userId}`)
         .then(response => {
             if(response){console.log('Booking registered')
             window.location.reload();

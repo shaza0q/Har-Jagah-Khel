@@ -81,6 +81,7 @@ router.get('/getBookingData', async(req, res) => {
     try{
         const data = await Booking.find({ground_id: groundId})
         if(data.length !== 0){
+            
             return res.json(data)
         }
     }

@@ -20,7 +20,7 @@ const Home = () => {
     const handleDashboard = () => {
         
         axios.get('http://localhost:3100/auth/dashboard')
-        .then(res =>{
+        .then(res => {
             if(res.data.status){
                 navigate('/compDashboard')
             }else{
